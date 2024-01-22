@@ -1,4 +1,5 @@
 from flask import Flask
+import os
 import asyncio
 
 counter_lock = asyncio.Lock()
@@ -15,4 +16,7 @@ async def index():
         counter += 1
     return 'Web App with Python Flask! - {}'.format(counter)
 
-app.run(host='0.0.0.0', port=8080)
+if __name__ == '__main__':
+    host = os.getenv('FLASK_HOST', '0.0.0.0')
+    port = os.getenv('FLASK_PORT', '5000')
+    app.run(host=host, port=int(port))
