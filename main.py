@@ -7,6 +7,7 @@ counter = 0
 app = Flask(__name__)
 
 @app.route('/')
+@app.route('/reqcnt/')
 async def index():
     global counter
 
